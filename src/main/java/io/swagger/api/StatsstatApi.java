@@ -5,7 +5,6 @@
  */
 package io.swagger.api;
 
-import io.swagger.model.Dataset;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -32,20 +31,26 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-23T15:24:59.862Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-28T18:00:10.004Z[GMT]")
 @Validated
-public interface CatalogApi {
+public interface StatsstatApi {
 
-    @Operation(summary = "Retrieve all dataset names", description = "Returns names for all of the datasets in the catalog", security = {
+    @Operation(summary = "Retrieve all datasets", description = "Returns all of the datasets in the catalog", security = {
         @SecurityRequirement(name = "catalog_auth", scopes = {
             "write:catalog",
 "read:catalog"        })    }, tags={ "catalog" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Successful operation", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Dataset.class)))) })
-    @RequestMapping(value = "/catalog/datasets",
+        @ApiResponse(responseCode = "200", description = "Successful operation", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Object.class))),
+        
+        @ApiResponse(responseCode = "401", description = "Unauthorized"),
+        
+        @ApiResponse(responseCode = "403", description = "Forbidden"),
+        
+        @ApiResponse(responseCode = "404", description = "Not Found") })
+    @RequestMapping(value = "/statsstat/catalog/datasets",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<List<Dataset>> getDatasetNames();
+    ResponseEntity<Object> getAllAvailableDatasetsGET();
 
 }
 

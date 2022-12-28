@@ -4,7 +4,6 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
-import org.threeten.bp.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -13,58 +12,26 @@ import javax.validation.constraints.*;
  * Dataset
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-23T15:24:59.862Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-28T18:00:10.004Z[GMT]")
 
 
 public class Dataset   {
+  @JsonProperty("lastUpdated")
+  private Object lastUpdated = null;
+
   @JsonProperty("name")
-  private String name = null;
+  private Object name = null;
 
   @JsonProperty("recordCount")
-  private Long recordCount = null;
+  private Object recordCount = null;
 
-  @JsonProperty("lastUpdated")
-  private OffsetDateTime lastUpdated = null;
+  @JsonProperty("description")
+  private Object description = null;
 
-  public Dataset name(String name) {
-    this.name = name;
-    return this;
-  }
+  @JsonProperty("indexableField")
+  private Object indexableField = null;
 
-  /**
-   * Get name
-   * @return name
-   **/
-  @Schema(description = "")
-  
-    public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public Dataset recordCount(Long recordCount) {
-    this.recordCount = recordCount;
-    return this;
-  }
-
-  /**
-   * Get recordCount
-   * @return recordCount
-   **/
-  @Schema(description = "")
-  
-    public Long getRecordCount() {
-    return recordCount;
-  }
-
-  public void setRecordCount(Long recordCount) {
-    this.recordCount = recordCount;
-  }
-
-  public Dataset lastUpdated(OffsetDateTime lastUpdated) {
+  public Dataset lastUpdated(Object lastUpdated) {
     this.lastUpdated = lastUpdated;
     return this;
   }
@@ -73,15 +40,90 @@ public class Dataset   {
    * Get lastUpdated
    * @return lastUpdated
    **/
-  @Schema(description = "")
+  @Schema(example = "1672249350", description = "")
   
-    @Valid
-    public OffsetDateTime getLastUpdated() {
+    public Object getLastUpdated() {
     return lastUpdated;
   }
 
-  public void setLastUpdated(OffsetDateTime lastUpdated) {
+  public void setLastUpdated(Object lastUpdated) {
     this.lastUpdated = lastUpdated;
+  }
+
+  public Dataset name(Object name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   **/
+  @Schema(example = "Example Dataset Name", description = "")
+  
+    public Object getName() {
+    return name;
+  }
+
+  public void setName(Object name) {
+    this.name = name;
+  }
+
+  public Dataset recordCount(Object recordCount) {
+    this.recordCount = recordCount;
+    return this;
+  }
+
+  /**
+   * Get recordCount
+   * @return recordCount
+   **/
+  @Schema(example = "24586", description = "")
+  
+    public Object getRecordCount() {
+    return recordCount;
+  }
+
+  public void setRecordCount(Object recordCount) {
+    this.recordCount = recordCount;
+  }
+
+  public Dataset description(Object description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Get description
+   * @return description
+   **/
+  @Schema(example = "This is some example text for a description of a dataset", description = "")
+  
+    public Object getDescription() {
+    return description;
+  }
+
+  public void setDescription(Object description) {
+    this.description = description;
+  }
+
+  public Dataset indexableField(Object indexableField) {
+    this.indexableField = indexableField;
+    return this;
+  }
+
+  /**
+   * Get indexableField
+   * @return indexableField
+   **/
+  @Schema(description = "")
+  
+    public Object getIndexableField() {
+    return indexableField;
+  }
+
+  public void setIndexableField(Object indexableField) {
+    this.indexableField = indexableField;
   }
 
 
@@ -94,14 +136,16 @@ public class Dataset   {
       return false;
     }
     Dataset dataset = (Dataset) o;
-    return Objects.equals(this.name, dataset.name) &&
+    return Objects.equals(this.lastUpdated, dataset.lastUpdated) &&
+        Objects.equals(this.name, dataset.name) &&
         Objects.equals(this.recordCount, dataset.recordCount) &&
-        Objects.equals(this.lastUpdated, dataset.lastUpdated);
+        Objects.equals(this.description, dataset.description) &&
+        Objects.equals(this.indexableField, dataset.indexableField);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, recordCount, lastUpdated);
+    return Objects.hash(lastUpdated, name, recordCount, description, indexableField);
   }
 
   @Override
@@ -109,9 +153,11 @@ public class Dataset   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Dataset {\n");
     
+    sb.append("    lastUpdated: ").append(toIndentedString(lastUpdated)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    recordCount: ").append(toIndentedString(recordCount)).append("\n");
-    sb.append("    lastUpdated: ").append(toIndentedString(lastUpdated)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    indexableField: ").append(toIndentedString(indexableField)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,6 +1,5 @@
 package io.swagger.api;
 
-import io.swagger.model.Dataset;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -32,34 +31,34 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-23T15:24:59.862Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-28T18:00:10.004Z[GMT]")
 @RestController
-public class CatalogApiController implements CatalogApi {
+public class StatsstatApiController implements StatsstatApi {
 
-    private static final Logger log = LoggerFactory.getLogger(CatalogApiController.class);
+    private static final Logger log = LoggerFactory.getLogger(StatsstatApiController.class);
 
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public CatalogApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+    public StatsstatApiController(ObjectMapper objectMapper, HttpServletRequest request) {
         this.objectMapper = objectMapper;
         this.request = request;
     }
 
-    public ResponseEntity<List<Dataset>> getDatasetNames() {
+    public ResponseEntity<Object> getAllAvailableDatasetsGET() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<List<Dataset>>(objectMapper.readValue("[ {\n  \"lastUpdated\" : \"2000-01-23T04:56:07.000+00:00\",\n  \"recordCount\" : 0,\n  \"name\" : \"name\"\n}, {\n  \"lastUpdated\" : \"2000-01-23T04:56:07.000+00:00\",\n  \"recordCount\" : 0,\n  \"name\" : \"name\"\n} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<Object>(objectMapper.readValue("\"\"", Object.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<List<Dataset>>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<List<Dataset>>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<Object>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }
