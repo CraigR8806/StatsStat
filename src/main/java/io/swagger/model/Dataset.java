@@ -1,37 +1,42 @@
 package io.swagger.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.v3.oas.annotations.media.Schema;
-import org.springframework.validation.annotation.Validated;
+
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+
+import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * Dataset
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-28T18:00:10.004Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-29T00:56:50.235Z[GMT]")
 
 
 public class Dataset   {
   @JsonProperty("lastUpdated")
-  private Object lastUpdated = null;
+  private Long lastUpdated = null;
 
   @JsonProperty("name")
-  private Object name = null;
+  private String name = null;
 
   @JsonProperty("recordCount")
-  private Object recordCount = null;
+  private Long recordCount = null;
 
   @JsonProperty("description")
-  private Object description = null;
+  private String description = null;
 
   @JsonProperty("indexableField")
-  private Object indexableField = null;
+  @Valid
+  private List<DatasetFieldDefinition> indexableField = null;
 
-  public Dataset lastUpdated(Object lastUpdated) {
+  public Dataset lastUpdated(Long lastUpdated) {
     this.lastUpdated = lastUpdated;
     return this;
   }
@@ -42,15 +47,15 @@ public class Dataset   {
    **/
   @Schema(example = "1672249350", description = "")
   
-    public Object getLastUpdated() {
+    public Long getLastUpdated() {
     return lastUpdated;
   }
 
-  public void setLastUpdated(Object lastUpdated) {
+  public void setLastUpdated(Long lastUpdated) {
     this.lastUpdated = lastUpdated;
   }
 
-  public Dataset name(Object name) {
+  public Dataset name(String name) {
     this.name = name;
     return this;
   }
@@ -61,15 +66,15 @@ public class Dataset   {
    **/
   @Schema(example = "Example Dataset Name", description = "")
   
-    public Object getName() {
+    public String getName() {
     return name;
   }
 
-  public void setName(Object name) {
+  public void setName(String name) {
     this.name = name;
   }
 
-  public Dataset recordCount(Object recordCount) {
+  public Dataset recordCount(Long recordCount) {
     this.recordCount = recordCount;
     return this;
   }
@@ -80,15 +85,15 @@ public class Dataset   {
    **/
   @Schema(example = "24586", description = "")
   
-    public Object getRecordCount() {
+    public Long getRecordCount() {
     return recordCount;
   }
 
-  public void setRecordCount(Object recordCount) {
+  public void setRecordCount(Long recordCount) {
     this.recordCount = recordCount;
   }
 
-  public Dataset description(Object description) {
+  public Dataset description(String description) {
     this.description = description;
     return this;
   }
@@ -99,16 +104,24 @@ public class Dataset   {
    **/
   @Schema(example = "This is some example text for a description of a dataset", description = "")
   
-    public Object getDescription() {
+    public String getDescription() {
     return description;
   }
 
-  public void setDescription(Object description) {
+  public void setDescription(String description) {
     this.description = description;
   }
 
-  public Dataset indexableField(Object indexableField) {
+  public Dataset indexableField(List<DatasetFieldDefinition> indexableField) {
     this.indexableField = indexableField;
+    return this;
+  }
+
+  public Dataset addIndexableFieldItem(DatasetFieldDefinition indexableFieldItem) {
+    if (this.indexableField == null) {
+      this.indexableField = new ArrayList<DatasetFieldDefinition>();
+    }
+    this.indexableField.add(indexableFieldItem);
     return this;
   }
 
@@ -117,12 +130,12 @@ public class Dataset   {
    * @return indexableField
    **/
   @Schema(description = "")
-  
-    public Object getIndexableField() {
+      @Valid
+    public List<DatasetFieldDefinition> getIndexableField() {
     return indexableField;
   }
 
-  public void setIndexableField(Object indexableField) {
+  public void setIndexableField(List<DatasetFieldDefinition> indexableField) {
     this.indexableField = indexableField;
   }
 

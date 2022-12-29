@@ -1,28 +1,28 @@
 package io.swagger.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.v3.oas.annotations.media.Schema;
+
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * DatasetFieldDefinition
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-28T18:00:10.004Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-29T00:56:50.235Z[GMT]")
 
 
 public class DatasetFieldDefinition   {
   @JsonProperty("fieldName")
-  private Object fieldName = null;
+  private String fieldName = null;
 
   @JsonProperty("datatype")
-  private Object datatype = null;
+  private String datatype = null;
 
-  public DatasetFieldDefinition fieldName(Object fieldName) {
+  public DatasetFieldDefinition fieldName(String fieldName) {
     this.fieldName = fieldName;
     return this;
   }
@@ -33,15 +33,15 @@ public class DatasetFieldDefinition   {
    **/
   @Schema(example = "Example Field Name", description = "")
   
-    public Object getFieldName() {
+    public String getFieldName() {
     return fieldName;
   }
 
-  public void setFieldName(Object fieldName) {
+  public void setFieldName(String fieldName) {
     this.fieldName = fieldName;
   }
 
-  public DatasetFieldDefinition datatype(Object datatype) {
+  public DatasetFieldDefinition datatype(String datatype) {
     this.datatype = datatype;
     return this;
   }
@@ -52,11 +52,11 @@ public class DatasetFieldDefinition   {
    **/
   @Schema(example = "String", description = "")
   
-    public Object getDatatype() {
+    public String getDatatype() {
     return datatype;
   }
 
-  public void setDatatype(Object datatype) {
+  public void setDatatype(String datatype) {
     this.datatype = datatype;
   }
 
