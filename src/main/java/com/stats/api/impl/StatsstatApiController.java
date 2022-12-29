@@ -22,21 +22,9 @@ import io.swagger.model.DatasetFieldDefinition;
 @RestController
 public class StatsstatApiController implements StatsstatApi {
 
-    private static final Logger log = LoggerFactory.getLogger(StatsstatApiController.class);
+    private static final List<Dataset> datasets = new ArrayList<>();
 
-    private final ObjectMapper objectMapper;
-
-    private final HttpServletRequest request;
-
-    @org.springframework.beans.factory.annotation.Autowired
-    public StatsstatApiController(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
-
-    public ResponseEntity<List<Dataset>> getAllAvailableDatasetsGET() {
-        List<Dataset> datasets = new ArrayList<>();
-
+    static {
         long now = (System.currentTimeMillis()/1000);
 
         IntStream.range(0, 10).forEach(i -> {
@@ -62,7 +50,21 @@ public class StatsstatApiController implements StatsstatApi {
             tmp.setIndexableField(defs);
             datasets.add(tmp);
         });
-        
+    }
+
+    private static final Logger log = LoggerFactory.getLogger(StatsstatApiController.class);
+
+    private final ObjectMapper objectMapper;
+
+    private final HttpServletRequest request;
+
+    @org.springframework.beans.factory.annotation.Autowired
+    public StatsstatApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+        this.objectMapper = objectMapper;
+        this.request = request;
+    }
+
+    public ResponseEntity<List<Dataset>> getAllAvailableDatasetsGET() {
         return new ResponseEntity<List<Dataset>>(datasets, HttpStatus.OK);
     }
 
